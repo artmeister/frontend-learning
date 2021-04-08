@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание блоков через функцию</title>
+
+    <style>
+        #block {
+            display: flex;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="block"></div>
+
+    <script>
+        let q = prompt("Введите кол-во блоков:"),
+            blockImg = "",
+            n = 1;
+
+        function createBlocks(height, width, margin) {
+            for (i = 1; i <= q; i++) {
+                blockImg +=
+                    `<div style="height: ${height}px; width: ${width}px; margin: ${margin}px; background: center / cover no-repeat url(../images/${n}.jpg);"></div>`;
+                n++;
+            }
+
+            block.innerHTML = blockImg;
+        }
+
+        createBlocks(
+            prompt("Введите высоту блока:"),
+            prompt("Введите ширину блока:"),
+            prompt("Введите отступ между блоками:")
+        );
+    </script>
+</body>
+
+</html>

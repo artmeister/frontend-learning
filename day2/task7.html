@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Создание таблицы через JS</title>
+
+    <style>
+        table, td {border: 1px solid;}
+    </style>
+</head>
+<body>
+    <div id="table"></div>
+
+    <script>
+        let x = prompt("Введите кол-во столбцов: ");
+        let y = prompt("Введите кол-во строк: ");
+
+        let n = 1;
+
+        let tab = "<table><tbody>";
+
+            for (i = 1; i <= y; i++) {
+                tab += "<tr>";
+
+                    for(j = 1; j <= x; j++) {
+                        tab += `<td><img src="../images/${n}.png"></td>`;
+                        n++;
+                    }
+                tab += "</tr>";
+            }
+        tab += "</tbody></table>";
+
+        table.innerHTML = tab;
+    </script>
+</body>
+</html>

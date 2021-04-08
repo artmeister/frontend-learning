@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+</head>
+<body>
+
+    <img src="../images/1.jpg" id="img">
+
+    <!-- <script>
+        const pic = document.getElementById("img");
+        let numImg = prompt("Введите номер картинки:");
+        extImg = prompt("Введите расширение картинки:");
+
+        if (numImg >= 1 && numImg <=11 && (extImg == "jpg" || extImg == "png")) {
+            pic.src=`../images/${numImg}.${extImg}`;
+        }
+        else {
+            alert("Неверный номер (1-11) или расширение (png/jpg)");
+        }
+
+    </script> -->
+
+    <script>
+        const pic = document.getElementById("img");
+        let numImg = prompt("Введите номер картинки:");
+
+        if (numImg >= 1 && numImg <=11) {
+            extImg = prompt("Введите расширение картинки:");
+            if (extImg == "jpg" || extImg == "png") {
+                pic.src=`../images/${numImg}.${extImg}`;
+            }
+            else {
+                alert("Неверное расширение (png/jpg)");
+            }
+        }
+        else {
+            alert("Неверный номер (1-11)");
+        }
+
+    </script>
+</body>
+</html>

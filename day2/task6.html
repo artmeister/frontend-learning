@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Картинки через цикл с рамками</title>
+
+    <style>
+        img {
+            height: 200px;
+            margin: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="img"></div>
+
+    <script>
+        let pic = "",
+            i = 1;
+
+        // for (i = 1; i <= 11; i += 2) {
+        //     pic += `<img style="height: ${h}; border: 2px solid blue;" src="../images/${i}.jpg">`;
+        // }
+
+        // for (i = 2; i <= 10; i += 2) {
+        //     pic += `<img style="height: ${h}; border: 2px solid green;" src="../images/${i}.png">`;
+        // }
+
+        while (i <= 11) {
+            if (i % 2 == 0) {
+                pic += `<img class="img" src="../images/${i}.png" style="border: 2px solid green;">`;
+            } else {
+                pic += `<img class="img" src="../images/${i}.jpg" style="border: 2px solid blue;">`;
+            }
+            i++;
+        }
+
+        img.innerHTML = pic;
+    </script>
+</body>
+
+</html>

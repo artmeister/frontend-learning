@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>  
+    <form name="menuForm">
+        <input size="35" type="text" name="elemMenu" value="Главная, О компании, Новости, Контакты">
+        <!-- <input id="submitExp" type="button" value="Отправить">
+        <input type="reset"> -->
+    </form>
+
+    <nav id="menuWrapper"></nav>
+
+    <script>
+        // 
+        // let menu = "Главная, О компании, Новости, Контакты";
+        let menu = menuForm.elemMenu.value;
+        let colorMenu = ["red", "blue", "green", "purple"];
+        let elems = menu.split(", ");
+
+        let s = "",
+        c = 0;
+        for (i = 0; i < elems.length; i++) {
+            while (c <= i) {
+                s += `
+                <li style="color: ${colorMenu[c]};">${elems[i]}</li>
+                `;
+                c++;
+            }
+        }
+
+        menuWrapper.innerHTML = s;
+
+        // Массивы
+        // let arr = new Array(5), // Пустой массив с 5 элементами
+        // arr1 = [1,2];
+
+        // fruits = ['Apple', 'Orange', 'Pineapple']
+
+        // for (i = 0; i < 3; i++) console.log(fruits[i]);
+
+        
+        // Событие onclick
+        // function submitForm() {
+        //     let n = myForm.userName.value;
+
+        //     myForm.userName.value = `Результат ${eval(n)}`;
+        // }
+
+        // submitExp.addEventListener("click", submitForm);
+
+
+        // Глобльные и локальные переменные
+        // localName = "Вася";
+        // globalName = "Вася";
+
+        // function showMessage() {
+        //     let local = `Привет, ${userName}`;
+
+        //     varGlobal = `Привет, ${globalName}`;
+            
+        //     alert(message);
+        // }
+
+        // showMessage();
+
+        // console.log(message);
+
+        // Уравнение через функцию
+        // function addition(a, b) {
+        //     return a + b;
+        // }
+
+        // function multiplication(a, b) {
+        //     return a * b;
+        // }
+
+        // function division(a, b) {
+        //     return a / b;
+        // }
+
+        // console.log(`x = ${addition(5, 5)} / ${multiplication(6, 6)} * ${division(2, 2)}`);
+
+        // Факториал числа
+        // function f(x) {
+
+        //     let y = 1,
+        //     i = 1;
+
+        //     while(i <= x) {
+        //         y *= i; //y = y * i
+        //         i++;
+        //     }
+            
+        //     return y;
+        // }
+
+        // let M = 5;
+        // let N = 3;
+
+        // C = (f(M) + f(N)) / f(M + N);
+
+        // alert(C);
+
+
+        // Обращение к форме
+        // function submitForm() {
+        //     // alert("Hello!");
+
+        //    let n = myForm.userName.value;
+
+        //    myForm.userName.value = `Результат ${eval(n)}`;
+
+        //    alert('Good');
+
+        // }
+    </script>
+
+</body>
+</html>

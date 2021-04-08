@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 2</title>
+</head>
+
+<body>
+    <div id="block-imgs"></div>
+
+    <script>
+        const div = document.getElementById("block-imgs");
+
+        // let s = "", y = 1;
+        // let s = "", x = 10;
+        let s = "", y = 1, n = 100;
+
+
+        // Выводим с 1 по 11 картинки
+        // while (y <= 11) {
+        //     s += `<img style="height: 200px;" src="../images/${y}.jpg">`;
+        //     y++;
+        // }
+
+        // Выводим с 10 по 1 картинки
+        // while (x >= 1) {
+        //     n += `<img style="height: 200px;" src="../images/${x}.png">`;
+        //     x--;
+        // }
+
+        // div.innerHTML = [s,n];
+        
+        // Тоже через for
+        // for (x = 11; x >= 1; x--) {
+        //     s += `<img style="height: 200px;" src="../images/${x}.jpg">`;
+        // }
+
+        // Выводим значения через prompt
+        let start = prompt("ВВедите первое число: ");
+        let finish = prompt("ВВедите последнее число: ");
+
+        while (y <= finish) {
+            s += `<img style="height: ${n}px;" src="../images/${y}.jpg">`;
+            y++;
+        }
+
+        div.innerHTML = s;
+
+    </script>
+</body>
+
+</html>
