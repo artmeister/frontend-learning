@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Объекты</title>
+</head>
+
+    <style>
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            width: 1000px;
+            height: 900px;
+            border: 1px solid red;
+        }
+
+        .container .item {
+            width: 100px;
+            height: 100px;
+            border: 1px solid blue;
+            margin: 5px;
+        }
+
+
+    </style>
+
+<body>
+
+    <div id="myImg">
+        <img src="../images/1.jpg" width="500px" height="500px">
+    </div>
+
+    <!-- <div class="container">
+        <div class="item">Блок 1</div>
+        <div class="item">Блок 2</div>
+        <div class="item">Блок 3</div>
+        <div class="item">Блок 4</div>
+        <div class="item">Блок 5</div>
+    </div> -->
+    
+    <script>
+        // Объявление объекта
+        // person = new Object();
+
+        // person1 = {}; //короткая запись
+
+
+        // let person2 = {
+
+        //     firstName: "Ivan",
+        //     lastName: "Petrov",
+        //     id: 5566,
+
+        //     fullName: function() {
+        //         return `${this.firstName} ${this.lastName}`;
+        //     }
+
+        // };
+
+        // Обращение к свойству объекта
+        // alert(person2.fullName());
+
+
+        // let person3 = {};
+        
+        // person3.name = "Vasya";
+        // person3.age = 25;
+
+        // alert(`Меня зовут ${person3.name} мне ${person3.age} лет`);
+
+        // delete person3.age;
+
+        // if ("age" in person3) alert("Существует");
+        //     else alert("Пользователь удален");
+
+        
+        // person3.name = "Petya";
+        // person3["name"] = "Petya";
+
+        
+        // Доступ к свойству объ. через переменную
+        // person3.age = 30;
+        // let key = "age";
+        // alert(person3[key]);
+
+        // let menu = {
+        //     with: 300,
+        //     height: 200,
+        //     title: "Menu"
+        // }
+
+
+        // Перебор и подсчёт свойств (for..in)
+        // let counter = 0;
+
+        // for (let key in menu) {
+        //     alert(`Свойствo: ${key}; Значение: ${menu[key]}`);
+
+        //     counter++;
+
+        //     alert(`Всего свойств объекта: ${counter}`);
+        // }
+
+
+        // Копии объектов
+        // let user = {
+        //     name: "Artem",
+        //     age: 24
+        // };
+        // let admin = user; // Зависимая копия объекта
+
+        // admin.name = "Dima";
+
+        // alert(`Имя админа: ${admin.name}`);
+        // alert(`Имя юзера: ${user.name}`);
+
+        // let user = {
+        //     name: "Artem",
+        //     age: 24
+        // };
+        // let clone = {}; // Независимая копия объекта
+
+        // for (let key in user) {
+        //     clone[key] = user[key];
+
+        //     alert(`user ${key}: ${user[key]}; clone ${key}: ${clone[key]}`);
+        // }
+
+        // clone.name = "Dima";
+        // clone.age = 23;
+
+        // alert(`user: ${user.name}; clone: ${clone.name}`);
+        // alert(`user: ${user.age}; clone: ${clone.age}`);
+
+
+        // Многомерные массивы
+        // let matrix = [
+        //     [3,3,3], // 0
+        //     [1,[5,7,8],1], // 1
+        //     [2,2,2]  // 2
+        // ];
+
+        // alert(`${matrix[0][0]};${matrix[1][1][1]};${matrix[2][2]}`);
+
+
+        // Объект из массивов
+        // let a = {
+        //     prop1: [["Ivan","Stas"],"Katya","Irina"],
+        //     prop2: ["Sergey","Anatoly",["Pavel","Nastya"]]
+        // };
+
+        // alert(a.prop2[2][1]);
+
+        // Массив из объектов
+        let obj1 = {
+            src: "1.jpg",
+            width: 300,
+            height: 200
+        };
+
+        let obj2 = {
+            src: "2.jpg",
+            width: 200,
+            height: 300
+        };
+
+        let obj3 = {
+            src: "3.jpg",
+            width: 300,
+            height: 300
+        };
+
+        let arrObject = [obj1,obj2,obj3];
+
+        let s = "";
+
+        for (i = 0; i < arrObject.length; i++) {
+
+            fName = arrObject[i].src;
+            fWidth = arrObject[i].width;
+            fHeight = arrObject[i].height;
+
+            s += `<img src="../images/${fName}" width="${fWidth}" height="${fHeight}">`;
+
+        }
+
+        myImg.innerHTML = s;
+
+    </script>
+</body>
+</html>
