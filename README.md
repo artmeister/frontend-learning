@@ -1,11 +1,11 @@
-<style>
+<!-- <style>
     .daysBlock {
         display: flex;
         justify-content: space-between;
     }
-</style>
+</style> -->
 
-<div class="daysBlock">
+<div class="daysBlock" style="display: flex;justify-content: space-between;">
     <div class="dayWrapper">
         <h2>День 1</h2>
         <p>
