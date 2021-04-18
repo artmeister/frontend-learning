@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="box"></div>
+
+    <p id="colorise"></p>
+
+    <script>
+        cities = ['Минск', 'Москва', 'Нью-Йорк'];
+
+        //   let a = Math.random();
+        //   alert(a);
+
+        //   let x = 3;
+        //   let b = Math.random()*x;
+        //   let c = Math.floor(b);
+        //   let c1 = Math.round(b);
+
+        // alert(`Только целая часть: ${c}\n7Округление: ${c1}`);
+        // alert(cities.length);
+        let r = Math.random() * cities.length;
+        let res1 = Math.floor(r);
+        // let res2 = Math.round(r);
+
+        box.innerHTML = `<p>${res1}: ${cities[res1]}</p>`;
+        // <p>${res2}: ${cities[res2]}</p>
+
+        function changeColor() {
+
+            let colors = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+
+            let s = '#';
+            for (i = 1; i <= 6; i++) {
+                let index = Math.floor(Math.random() * colors.length);
+
+                s += colors[index];
+
+                // alert(index);
+            }
+
+            // colorise.style.color = s;
+
+            document.body.style.background = s;
+            colorise.innerHTML = `Цвет: ${s}`;
+            // alert(s);
+
+            setTimeout('changeColor()', 1000);
+            
+        }
+    </script>
+
+</body>
+</html>
