@@ -168,7 +168,7 @@ a {
   }
 
   @include large {
-    max-width: 64rem;
+    // max-width: 64rem;
     padding: 2rem 6rem;
     margin: 0 auto;
     font-size: 1.1rem;
@@ -334,6 +334,14 @@ a {
     margin: 1rem 0;
     background-color: $hr-border-color;
     border: 0;
+  }
+
+  .daysBlock {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    
+    .dayWrapper {margin-right: 50px;}
   }
 }
 
