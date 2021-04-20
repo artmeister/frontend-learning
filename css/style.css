@@ -1,0 +1,30 @@
+body {
+    width: 100%;
+    margin: 0 auto;
+}
+
+font {margin-top: 10px;}
+
+a {text-decoration: none;}
+
+.gallery-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 50px;
+}
+
+.gallery-wrapper-big {
+    
+}
+
+.gallery-wrapper__block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.img-big {
+    width: 1000px;
+    margin: 0 auto;
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <section id="galleryBlock" class="gallery-wrapper"></section>
+    <section id="bigPicture" class="gallery-wrapper-big"></section>
+
+    <script>
+        let objRed = {
+            fName: 'red',
+            fWidth: '300',
+            fTitle: 'Красный костел',
+            fDescription: 'В храме святого Симеона и святой Елены находится полномасштабная копия Туринской Плащаницы',
+            fLink: 'https://msj.by/katolicheskie-xramy/krasnyj-kostel-v-minske/'
+        },
+        objMir = {
+            fName: 'mir',
+            fWidth: '300',
+            fTitle: 'Мирский замок',
+            fDescription: 'Построенный в начале XVI в. магнатом Ю. И. Ильиничем замок стал первым частнособственническим замком на землях Белоруссии',
+            fLink: 'https://mirzamak.by/'
+        },
+        objTroi = {
+            fName: 'troi',
+            fWidth: '300',
+            fTitle: 'Троицкое предместье',
+            fDescription: 'Троицкое предместье — исторический район города Минска, расположенный в северо-восточной части исторического центра на левом берегу реки Свислочь',
+            fLink: 'https://www.belarus.by/ru/travel/belarus-life/trinity-suburb'
+        }
+
+        let gallery = [objRed,objMir,objTroi];
+        let s = "";
+
+        for (i = 0; i < gallery.length; i++) {
+
+            s += `
+                <div class="gallery-wrapper__block">
+                    <img id="img" class="img ${gallery[i].fName}" src="../images/${gallery[i].fName}.jpg" width="${gallery[i].fWidth}" onclick="bigPic('${gallery[i].fName}', '${gallery[i].fDescription}')">
+                    <font>
+                        <a href="${gallery[i].fLink}">${gallery[i].fTitle}</a>
+                    </font>
+                </div>
+            `;
+
+        }
+
+        galleryBlock.innerHTML = s;
+
+
+        function bigPic(p, d) {
+            bigPicture.innerHTML = `
+                <img onclick="bigPicture.innerHTML = ''" class="img-big ${p}" src="../images/${p}.jpg" >
+                <p>${d}</p>
+            `
+        }
+        
+
+    </script>
+</body>
+
+</html>

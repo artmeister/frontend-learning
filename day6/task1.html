@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        #blocksWrapper {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .block {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            width: 300px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+    <section id="blocksWrapper"></section>
+
+    <script>
+        let blocks = +prompt("Сколько блоков?");
+
+        // Создание блоков
+        function createBlocks() {
+            let b = '';
+
+            for (i = 1; i <= 11; i++) {
+
+                b += `
+                    <div width="300px" height="300px" style="background: ${changeColor()};" id="block" class="block block-${i}">
+                        <img height="150px" src="../images/${i}.jpg">
+                    </div>
+                `;
+            }
+
+            blocksWrapper.innerHTML = b;
+        }
+
+        function changeColor() {
+
+            let colors = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
+                
+            s = '#';
+
+            for (k = 1; k <= 6; k++) {
+                index = Math.floor(Math.random() * colors.length);
+
+                s += colors[index];
+            }
+
+            return s;
+        }
+
+        if (blocks !== null || blocks !== '') {
+            createBlocks();
+        }
+    </script>
+</body>
+
+</html>
