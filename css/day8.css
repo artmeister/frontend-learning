@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+
+body {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    font-family: 'Oswald', sans-serif;
+}
+
+img {display: block;}
+
+#cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 1000px;
+    height: 900px;
+    border: 1px solid red;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    width: 300px;
+    height: 675px;
+    
+    margin: 0 auto;
+    border: 1px solid black;
+}
+
+.card__img-wrapper {position: relative;}
+
+.card__img {    
+    width: 100%;
+    max-width: 280px;
+    max-height: 420px;
+}
+
+img.card__img.-sale {
+    width: 100px;
+    position: absolute;
+    transform: translate(5px, -35px);
+    bottom: 0;
+    left: 0;
+}
+img.card__img.-bluray {
+    width: 100px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-90px, 136px);
+}
+
+.card__title {
+    color: #616161;
+    font-size: 24pt;
+    text-align: center;
+    max-width: 280px;
+    margin: 0;
+}
+
+.card__price {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 200px;
+    margin-top: 10px;
+}
+
+.card__price-old {
+    color: #868282;
+    text-decoration: line-through;
+    padding-left: 13px;
+}
+
+.card__rating {
+    display: flex;
+    margin: 10px auto;
+}
+
+@media screen and (max-width: 450px) {
+    #cards {
+        width: 100%;
+        height: auto;
+    }
+}
