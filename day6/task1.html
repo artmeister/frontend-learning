@@ -21,7 +21,7 @@
             align-items: center;
             height: 300px;
             width: 300px;
-            margin: 0 auto;
+            margin: 5px auto 5px;
         }
     </style>
 </head>
@@ -36,7 +36,7 @@
         function createBlocks() {
             let b = '';
 
-            for (i = 1; i <= 11; i++) {
+            for (i = 1; i <= blocks; i++) {
 
                 b += `
                     <div width="300px" height="300px" style="background: ${changeColor()};" id="block" class="block block-${i}">
@@ -63,9 +63,8 @@
             return s;
         }
 
-        if (blocks !== null || blocks !== '') {
-            createBlocks();
-        }
+        if (blocks >= 1 && blocks <= 11) createBlocks();
+         else alert("Неверное кол-во");
     </script>
 </body>
 
