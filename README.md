@@ -66,10 +66,25 @@
     <div class="dayWrapper">
         <h2>День 5</h2>
         <p>
-            <a href="./day4/task1.html">Задание 5.1</a>
+            <a href="./day5/task1.html">Задание 5.1</a>
         </p>
         <p>
-            <a href="./day4/task2.html">Задание 5.2</a>
+            <a href="./day5/task2.html">Задание 5.2</a>
         </p>
+    </div>
+    <div class="dayWrapper">
+        <h2>День 6</h2>
+        <p>
+            <a href="./day6/task1.html">Задание 6.1</a>
+        </p>
+    </div>
+    <div class="dayWrapper">
+        <h2>День 7</h2>
+        <p>
+            <a href="./day7/task1.html">Задание 7.1</a>
+        </p>
+    </div>
+    <div class="dayWrapper">
+        <h2>День 8</h2>
     </div>
 </div>
