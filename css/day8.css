@@ -10,7 +10,7 @@ body {
 
 img {display: block;}
 
-#cards {
+.cards {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -83,6 +83,7 @@ img.card__img.-bluray {
     display: flex;
     margin: 10px auto;
 }
+.card__rating .material-icons {color: #ffa500;}
 
 @media screen and (max-width: 450px) {
     #cards {

@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../../css/style.css">
 </head>
 
 <body>
@@ -16,54 +16,115 @@
 
     <script>
         let objRed = {
-            fName: 'red',
-            fWidth: '300',
-            fTitle: 'Красный костел',
-            fDescription: 'В храме святого Симеона и святой Елены находится полномасштабная копия Туринской Плащаницы',
-            fLink: 'https://msj.by/katolicheskie-xramy/krasnyj-kostel-v-minske/'
-        },
-        objMir = {
-            fName: 'mir',
-            fWidth: '300',
-            fTitle: 'Мирский замок',
-            fDescription: 'Построенный в начале XVI в. магнатом Ю. И. Ильиничем замок стал первым частнособственническим замком на землях Белоруссии',
-            fLink: 'https://mirzamak.by/'
-        },
-        objTroi = {
-            fName: 'troi',
-            fWidth: '300',
-            fTitle: 'Троицкое предместье',
-            fDescription: 'Троицкое предместье — исторический район города Минска, расположенный в северо-восточной части исторического центра на левом берегу реки Свислочь',
-            fLink: 'https://www.belarus.by/ru/travel/belarus-life/trinity-suburb'
-        }
+                fName: ['red', 'red1', 'red2'],
+                fWidth: '300',
+                fTitle: 'Красный костел',
+                fDescription: 'В храме святого Симеона и святой Елены находится полномасштабная копия Туринской Плащаницы',
+                fLink: 'https://msj.by/katolicheskie-xramy/krasnyj-kostel-v-minske/'
+            },
+            objMir = {
+                fName: ['mir', 'mir1', 'mir2'],
+                fWidth: '300',
+                fTitle: 'Мирский замок',
+                fDescription: 'Построенный в начале XVI в. магнатом Ю. И. Ильиничем замок стал первым частнособственническим замком на землях Белоруссии',
+                fLink: 'https://mirzamak.by/'
+            },
+            objTroi = {
+                fName: ['troi', 'troi1', 'troi2'],
+                fWidth: '300',
+                fTitle: 'Троицкое предместье',
+                fDescription: 'Троицкое предместье — исторический район города Минска, расположенный в северо-восточной части исторического центра на левом берегу реки Свислочь',
+                fLink: 'https://www.belarus.by/ru/travel/belarus-life/trinity-suburb'
+            }
 
-        let gallery = [objRed,objMir,objTroi];
-        let s = "";
+        let gallery = [objRed, objMir, objTroi];
+        let imgWrapper = '';
+        let bigImage = '';
+        let i = 0,
+            imgId = 1;
 
-        for (i = 0; i < gallery.length; i++) {
+        // ['troi', 'troi1', 'troi2'],
 
-            s += `
+        while (i < gallery.length) {
+            let img = gallery[i].fName,
+                desc = gallery[i].fDescription,
+                width = gallery[i].fWidth,
+                link = gallery[i].fLink,
+                title = gallery[i].fTitle;
+
+            imgWrapper += `
                 <div class="gallery-wrapper__block">
-                    <img id="img" class="img ${gallery[i].fName}" src="../images/${gallery[i].fName}.jpg" width="${gallery[i].fWidth}" onclick="bigPic('${gallery[i].fName}', '${gallery[i].fDescription}')">
+                    <img id="img-${img[0]}" class="img-small" src="../../images/${img[0]}.jpg" width="${width}">
                     <font>
-                        <a href="${gallery[i].fLink}">${gallery[i].fTitle}</a>
+                        <a href="${link}">${title}</a>
                     </font>
                 </div>
             `;
 
+            document.addEventListener("DOMContentLoaded", function () {
+                document.querySelector(`img#img-${img[0]}`).addEventListener("click", () => {
+
+                    for (j = 0; j < img.length; j++) {
+                        bigImage +=
+                            `<img id="img-big-${img[j]}" class="img-big" src="../../images/${img[j]}.jpg">`;
+                    }
+
+                    bigPicture.innerHTML = `
+                        <div class="gallery-big">
+                            ${bigImage}
+                        </div>
+                        <p>${desc}</p>
+
+                        <button id="close">x</button>
+                        <button id="btn-prev"></button>
+                        <button id="btn-next"></button>
+                    `;
+
+                    if (document.getElementById('bigPicture') !== null) {
+                        
+                        document.getElementById('close').addEventListener("click", () => {
+                            bigPicture.innerHTML = '';
+                        });
+
+                        const SLIDES = document.querySelectorAll('.gallery-big .img-big');
+                        let currentSlide = 0;
+                        let slideInterval = setInterval(nextSlide, 5000);
+
+                        function nextSlide() {
+                            goToSlide(currentSlide + 1);
+                        }
+
+                        function prevSlide() {
+                            goToSlide(currentSlide - 1);
+                        }
+
+                        function pauseSlideshow() {
+                            clearInterval(slideInterval);
+                        }
+
+                        function goToSlide(n) {
+                            SLIDES[currentSlide].className = 'img-big';
+                            currentSlide = (n + SLIDES.length) % SLIDES.length;
+                            SLIDES[currentSlide].className = 'img-big showing';
+                        }
+
+                        document.getElementById('btn-next').onclick = function () {
+                            pauseSlideshow();
+                            nextSlide();
+                        };
+
+                        document.getElementById('btn-prev').onclick = function () {
+                            pauseSlideshow();
+                            prevSlide();
+                        };
+                    }
+                });
+            });
+
+            i++, imgId++;
         }
 
-        galleryBlock.innerHTML = s;
-
-
-        function bigPic(p, d) {
-            bigPicture.innerHTML = `
-                <img onclick="bigPicture.innerHTML = ''" class="img-big ${p}" src="../images/${p}.jpg" >
-                <p>${d}</p>
-            `
-        }
-        
-
+        galleryBlock.innerHTML = imgWrapper;
     </script>
 </body>
 
