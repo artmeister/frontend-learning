@@ -24,14 +24,14 @@ SOFTWARE.
 
  */
 
-var SimpleStarRating = (function () {
+let SimpleStarRating = (function () {
     function SimpleStarRating(target) {
         function attr(name, d) {
-            var a = target.getAttribute(name);
+            let a = target.getAttribute(name);
             return (a ? a : d);
         }
 
-        var max = parseInt(attr('data-stars', 5)),
+        let max = parseInt(attr('data-stars', 5)),
             disabled = typeof target.getAttribute('disabled') != 'undefined',
             defaultRating = parseFloat(attr('data-default-rating', 0)),
             currentRating = -1,
@@ -39,8 +39,8 @@ var SimpleStarRating = (function () {
 
         target.style.display = 'inline-block';
 
-        for (var s = 0; s < max; s++) {
-            var n = document.createElement('span');
+        for (let s = 0; s < max; s++) {
+            let n = document.createElement('span');
             n.className = 'star';
             n.addEventListener('click', starClick);
             if (s > 0)
@@ -95,7 +95,7 @@ var SimpleStarRating = (function () {
 
         function showRating(r) {
             clearRating();
-            for (var i = 0; i < stars.length; i++) {
+            for (let i = 0; i < stars.length; i++) {
                 if (i >= r)
                     break;
                 if (i === Math.floor(r) && i !== r)
@@ -105,7 +105,7 @@ var SimpleStarRating = (function () {
         }
 
         function showCurrentRating() {
-            var ratingAttr = parseFloat(attr('data-rating', 0));
+            let ratingAttr = parseFloat(attr('data-rating', 0));
             if (ratingAttr) {
                 currentRating = ratingAttr;
                 showRating(currentRating);
@@ -120,7 +120,7 @@ var SimpleStarRating = (function () {
         }
 
         function clearRating() {
-            for (var i = 0; i < stars.length; i++) {
+            for (let i = 0; i < stars.length; i++) {
                 stars[i].classList.remove('active');
                 stars[i].classList.remove('half');
             }
@@ -130,13 +130,13 @@ var SimpleStarRating = (function () {
             if (disabled) return;
 
             if (this === e.target) {
-                var starClicked = stars.indexOf(e.target);
+                let starClicked = stars.indexOf(e.target);
                 if (starClicked !== -1) {
-                    var starRating = starClicked + 1;
+                    let starRating = starClicked + 1;
                     setCurrentRating(starRating);
                     if (typeof this.onrate === 'function')
                         this.onrate(currentRating);
-                    var evt = new CustomEvent('rate', {
+                    let evt = new CustomEvent('rate', {
                         detail: starRating,
                     });
                     target.dispatchEvent(evt);

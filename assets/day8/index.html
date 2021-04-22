@@ -48,35 +48,36 @@
         let cardInner = '';
             
                 cardInner += `
-                    <div class="card__img-wrapper">
-                        <img class="card__img" src="../../images/${card.cImg}" alt="${card.cTitle}">
-                        <img class="card__img -sale" src="../../images/${card.cStock}" alt="Акция">
-                        <img class="card__img -bluray" src="../../images/${card.cType}" alt="Blu-ray 3D">
-                    </div>
+                    <div class="card border">
+                        <div class="card__img-wrapper">
+                            <img class="card__img" src="../../images/${card.cImg}" alt="${card.cTitle}">
+                            <img class="card__img -sale" src="../../images/${card.cStock}" alt="Акция">
+                            <img class="card__img -bluray" src="../../images/${card.cType}" alt="Blu-ray 3D">
+                        </div>
 
-                    <h2 class="card__title">${card.cTitle}</h2>
+                        <h2 class="card__title">${card.cTitle}</h2>
 
-                    <div class="card__price">
-                        ${doSales}
-                    </div>
+                        <div class="card__price">
+                            ${doSales}
+                        </div>
 
-                    <div class="card__rating">
-                    </div>
+                        <div class="card__rating" data-default-rating="4.5"></div>
 
-                    <div class="card__btn-buy">
-                        <a href="#">
-                            <img src="../../images/${card.cBuy}" alt="Кнопка купить">
-                        </a>
+                        <div class="card__btn-buy">
+                            <a href="#">
+                                <img src="../../images/${card.cBuy}" alt="Кнопка купить">
+                            </a>
+                        </div>
                     </div>
                 `;
 
         cards.innerHTML = cardInner; // Выводим карточку
 
         // Выводим рейтинг
-        var ratings = document.getElementsByClassName('card__rating');
+        let ratings = document.getElementsByClassName('card__rating');
 
-            for (var i = 0; i < ratings.length; i++) {
-                var r = new SimpleStarRating(ratings[i]);
+            for (let i = 0; i < ratings.length; i++) {
+                let r = new SimpleStarRating(ratings[i]);
 
                 ratings[i].addEventListener('rate', function(e) {
                     console.log('Rating: ' + e.detail);
