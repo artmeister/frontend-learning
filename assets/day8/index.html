@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
@@ -9,45 +9,88 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../../css/day8.css">
+    <script src="../../js/index.js"></script>
+
 </head>
 
 <body>
 
-    <section id="cards" class="cards">
-        <div class="card">
+    <section id="cards" class="cards"></section>
 
-            <div class="card__img-wrapper">
-                <img class="card__img" src="../../images/animals.jpg" alt="Тайная жизнь домашних животных 2">
-                <img class="card__img -sale" src="../../images/akciya.png" alt="Акция">
-                <img class="card__img -bluray" src="../../images/bluray.png" alt="Blu-ray 3D">
-            </div>
+    <script>
+        card = {
+            cTitle: "Тайная жизнь домашних животных 2",
+            cPrice: 17.00,
+            cCurrency: "руб.",
+            cImg: "animals.jpg",
+            cType: "bluray.png",
+            cStock: "akciya.png",
+            cBuy: "btn-buy.png",
+            cSales: true,
+            cRating: 5
+        }
 
-            <h2 class="card__title">
-                Тайная жизнь домашних животных 2
-            </h2>
+        // Цена
+        let fullPrice = `${card.cPrice} ${card.cCurrency}`;
 
-            <div class="card__price">
-                <span class="card__price-actual">45,00 руб.</span>
-                <span class="card__price-old">50,00 руб.</span>
-            </div>
+        // Скидка
+        let salePrice = `${Math.floor(card.cPrice) * 0.9} ${card.cCurrency}`;
 
-            <div class="card__rating">
-                <span class="material-icons">star</span>
-                <span class="material-icons">star</span>
-                <span class="material-icons">star</span>
-                <span class="material-icons">star_half</span>
-                <span class="material-icons">star_border</span>
-            </div>
+        // Показываем/прячем скидку если true 
+        if (card.cSales) {
+            doSales = `
+                <span class="card__price-full">${salePrice}</span>
+                <span class="card__price-sale">${fullPrice}</span>
+            `;
+        } else doSales = `<span class="card__price-full">${fullPrice}</span>`;
 
-            <div class="card__btn-buy">
-                <a href="#">
-                    <img src="../../images/btn-buy.png" alt="Кнопка купить">
-                </a>
-            </div>
+        // Формирование карточки
+        let cardInner = '';
+            
+                cardInner += `
+                    <div class="card__img-wrapper">
+                        <img class="card__img" src="../../images/${card.cImg}" alt="${card.cTitle}">
+                        <img class="card__img -sale" src="../../images/${card.cStock}" alt="Акция">
+                        <img class="card__img -bluray" src="../../images/${card.cType}" alt="Blu-ray 3D">
+                    </div>
 
-        </div>
-    </section>
+                    <h2 class="card__title">${card.cTitle}</h2>
+
+                    <div class="card__price">
+                        ${doSales}
+                    </div>
+
+                    <div class="card__rating">
+                    </div>
+
+                    <div class="card__btn-buy">
+                        <a href="#">
+                            <img src="../../images/${card.cBuy}" alt="Кнопка купить">
+                        </a>
+                    </div>
+                `;
+
+        cards.innerHTML = cardInner; // Выводим карточку
+
+        // Выводим рейтинг
+        var ratings = document.getElementsByClassName('card__rating');
+
+            for (var i = 0; i < ratings.length; i++) {
+                var r = new SimpleStarRating(ratings[i]);
+
+                ratings[i].addEventListener('rate', function(e) {
+                    console.log('Rating: ' + e.detail);
+                });
+            }
+
+        // Убираем Акцию если false
+        const STOCK = document.querySelector(".-sale");
+
+        if (card.cSales == false) {
+            STOCK.style.display = "none";
+        }
+
+    </script>
 
 </body>
-
 </html>

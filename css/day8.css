@@ -12,12 +12,14 @@ img {display: block;}
 
 .cards {
     display: flex;
+    flex-flow: column wrap;
     justify-content: center;
     align-items: center;
 
-    width: 1000px;
-    height: 900px;
+    width: 700px;
+    height: 700px;
     border: 1px solid red;
+    margin: 0 auto;
 }
 
 .card {
@@ -29,14 +31,14 @@ img {display: block;}
 
     width: 300px;
     height: 675px;
-    
+
     margin: 0 auto;
     border: 1px solid black;
 }
 
 .card__img-wrapper {position: relative;}
 
-.card__img {    
+.card__img {
     width: 100%;
     max-width: 280px;
     max-height: 420px;
@@ -49,6 +51,7 @@ img.card__img.-sale {
     bottom: 0;
     left: 0;
 }
+
 img.card__img.-bluray {
     width: 100px;
     position: absolute;
@@ -71,19 +74,16 @@ img.card__img.-bluray {
     width: 100%;
     max-width: 200px;
     margin-top: 10px;
+    font-size: x-large;
 }
 
-.card__price-old {
+.card__price-sale {
     color: #868282;
     text-decoration: line-through;
     padding-left: 13px;
 }
 
-.card__rating {
-    display: flex;
-    margin: 10px auto;
-}
-.card__rating .material-icons {color: #ffa500;}
+.card__btn-buy {margin-top: 10px;}
 
 @media screen and (max-width: 450px) {
     #cards {
@@ -91,3 +91,44 @@ img.card__img.-bluray {
         height: auto;
     }
 }
+
+
+/** Star Rating by Jacob Lindahl **/
+.card__rating {
+    display: none;
+    font-size: 30px;
+    font-weight: bold;
+    color: #ee0;
+    white-space: nowrap;
+}
+.card__rating .star {
+    display: inline-block;
+    position: relative;
+    letter-spacing: 0.05em;
+}
+.card__rating .star::before {
+    display: inline-block;
+    color: #aaa;
+    content: '☆';
+    width: 1em;
+    height: 1em;
+}
+.card__rating .star::after {
+    display: inline-block;
+    position: absolute;
+    content: '★';
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    transition: all 0.1s linear;
+    overflow: hidden;
+}
+.card__rating:not([disabled]) .star:hover::after,
+.card__rating .star.active::after {
+    opacity: 1;
+    width: auto;
+    height: auto;
+}
+.card__rating .star.active.half::after {width: 0.5em;}
