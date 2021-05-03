@@ -9,45 +9,118 @@
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../../css/day8.css">
+    <script src="../../js/index.js"></script>
+
 </head>
 
 <body>
 
-    <section id="cards" class="cards">
-        <div class="card">
+    <section id="cards" class="cards"></section>
 
-            <div class="card__img-wrapper">
-                <img class="card__img" src="../../images/animals.jpg" alt="Тайная жизнь домашних животных 2">
-                <img class="card__img -sale" src="../../images/akciya.png" alt="Акция">
-                <img class="card__img -bluray" src="../../images/bluray.png" alt="Blu-ray 3D">
-            </div>
+    <script>
+        card = [ 
+            {
+                cTitle: "Тайная жизнь<br> домашних животных 2",
+                cPrice: 17.00,
+                cCurrency: "руб.",
+                cImg: "animals.jpg",
+                cType: "bluray.png",
+                cStock: "akciya.png",
+                cBuy: "btn-buy.png",
+                cSales: true,
+                cRating: 4.5
+            },
+            {
+                cTitle: "История игрушек 4:<br> Приключения Вилкинса",
+                cPrice: 18.00,
+                cCurrency: "руб.",
+                cImg: "toy4.jpg",
+                cType: "bluray.png",
+                cStock: "akciya.png",
+                cBuy: "btn-buy.png",
+                cSales: false,
+                cRating: 5
+            },
+            {
+                cTitle: "Фердинанд:<br> Побег из коровника",
+                cPrice: 19.00,
+                cCurrency: "руб.",
+                cImg: "ferd.jpg",
+                cType: "bluray.png",
+                cStock: "akciya.png",
+                cBuy: "btn-buy.png",
+                cSales: true,
+                cRating: 4
+            }
+        ];
 
-            <h2 class="card__title">
-                Тайная жизнь домашних животных 2
-            </h2>
+        let cardInner = '';
 
-            <div class="card__price">
-                <span class="card__price-actual">45,00 руб.</span>
-                <span class="card__price-old">50,00 руб.</span>
-            </div>
+        for (j = 0; j < card.length; j++) {
 
-            <div class="card__rating">
-                <span class="material-icons">star</span>
-                <span class="material-icons">star</span>
-                <span class="material-icons">star</span>
-                <span class="material-icons">star_half</span>
-                <span class="material-icons">star_border</span>
-            </div>
+            // Цена
+            let fullPrice = `${card[j].cPrice} ${card[j].cCurrency}`;
 
-            <div class="card__btn-buy">
-                <a href="#">
-                    <img src="../../images/btn-buy.png" alt="Кнопка купить">
-                </a>
-            </div>
+            // Скидка
+            let salePrice = `${Math.floor(card[j].cPrice) * 0.9} ${card[j].cCurrency}`;
 
-        </div>
-    </section>
+            // Показываем/прячем скидку если true 
+            if (card[j].cSales) {
+                doSales = `
+                    <span class="card__price-full">${salePrice}</span>
+                    <span class="card__price-sale">${fullPrice}</span>
+                `;
+            } else {
+                doSales = `<span class="card__price-full">${fullPrice}</span>`;
+            }
+
+            // Формирование карточки            
+                    cardInner += `
+                        <div class="card border">
+                            <div class="card__img-wrapper">
+                                <img class="card__img" src="../../images/${card[j].cImg}" alt="${card[j].cTitle}">
+                                <img class="card__img -sale" src="../../images/${card[j].cStock}" alt="Акция">
+                                <img class="card__img -bluray" src="../../images/${card[j].cType}" alt="Blu-ray 3D">
+                            </div>
+
+                            <h2 class="card__title">${card[j].cTitle}</h2>
+
+                            <div class="card__price">
+                                ${doSales}
+                            </div>
+
+                            <div class="card__rating" data-default-rating=${card[j].cRating}></div>
+
+                            <div class="card__btn-buy">
+                                <a href="#">
+                                    <img src="../../images/${card[j].cBuy}" alt="Кнопка купить">
+                                </a>
+                            </div>
+                        </div>
+                    `;
+
+            cards.innerHTML = cardInner; // Выводим карточку
+
+            let stock = document.querySelectorAll(".card__img.-sale")[j];
+
+            // Показываем/прячем скидку 
+            if (card[j].cSales === false) stock.style.display = "none";
+
+            console.log(stock);
+        }
+
+        // Выводим рейтинг
+        let ratings = document.getElementsByClassName('card__rating');
+
+        for (i = 0; i < ratings.length; i++) {
+            let r = new SimpleStarRating(ratings[i]);
+
+            // ratings[i].addEventListener('rate', function(e) {
+            //     console.log('Rating: ' + e.detail);
+            // });
+        }
+
+    </script>
 
 </body>
-
 </html>

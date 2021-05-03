@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>События и обработчики. Выбор элементов</title>
+</head>
+
+<body>
+
+    <h2 id="p1">Нажми!</h2>
+
+    <h2>
+        Введите текст: <input id="text" value="AAAAAAAA">
+
+        <button id="btn">Вперед!</button>
+    </h2>
+
+    <img id="img" src="../../images/summer.jpg">
+
+    <div id="box1"></div>
+
+    <section id="findHere">
+        <a href="">1</a>
+        <a href="">2</a>
+        <a href="">3</a>
+        <a href="">4</a>
+        <a href="">5</a>
+        <a href="">6</a>
+    </section>
+
+    <script>
+        const BLOCK = document.getElementById("box1");
+        const HEADER = document.getElementById("p1");
+        const INPUT = document.getElementById("text");
+        const BUTTON = document.getElementById("btn");
+        const IMAGE = document.getElementById("img");
+
+
+        function sayHello() {
+            alert('Hello!');
+            console.log('Hello!');
+        }
+
+        function message() {
+            alert(`Вы ввели ${INPUT.value}`);
+        }
+
+        function imgChange() {
+            BLOCK.innerHTML = `<img id="img" src="../../images/summer.jpg">`;
+        }
+
+        function upperCase() {
+            INPUT.value = INPUT.value.toUpperCase();
+        }
+
+        function lowerCase() {
+            INPUT.value = INPUT.value.toLowerCase();
+        }
+
+
+        // Загрузка || onload=""
+        // document.addEventListener('DOMContentLoaded', sayHello);
+
+        // Клик || onclick="" || onclick="funcName(this)"
+        // HEADER.addEventListener('click', sayHello);
+        // BUTTON.addEventListener('click', message);;
+
+        // Наведение и убирание мыши || onmouseover/onmouseout="" || onmouseenter/onmouseleave=""
+        // IMAGE.addEventListener('mouseover', imgChange);
+        // IMAGE.addEventListener('mouseout', function(){ 
+        //     div.innerHTML = "";
+        // });
+        // IMAGE.addEventListener('mouseenter', imgChange); // Не действует на потомков
+        // IMAGE.addEventListener('mouseleave', function(){ 
+        //     div.innerHTML = "";
+        // });
+
+        // Изменение || onchange=""
+        // INPUT.addEventListener('change', upperCase);
+
+        // Фокус и потеря фокуса
+        // INPUT.addEventListener('focus', lowerCase);
+        // INPUT.addEventListener('blur', upperCase);
+
+        document.addEventListener('DOMContentLoaded', links);
+
+
+        function links() {
+            // Перебираем ссылки внутри section
+            let f = document.getElementById('findHere');
+
+            let arrA = f.getElementsByTagName('a');
+
+            for (i = 0; i < arrA.length; i++) {
+                arrA[i].href = `lnk-${i+1}`;
+            }
+
+            // Перебираем ссылки внутри всего документа
+            let g = document.getElementsByTagName('a');
+
+            for (j = g.length-2; j < g.length; j++) {
+                g[j].innerHTML = `Ссылка ${j+1}`;
+            }
+        }
+    </script>
+</body>
+</html>

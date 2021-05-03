@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+
+<body>
+    <section id="galleryWrapper" class="gallery-wrapper"></section>
+    <section id="bigPicture" class="gallery-wrapper-big"></section>
+
+    <script>
+        let objRed = {
+                fName: [
+                    '<img class="img" src="../../images/red.jpg">',
+                    '<img class="img" src="../../images/red1.jpg">',
+                    '<img class="img" src="../../images/red2.jpg">'
+                ],
+                fWidth: '300',
+                fTitle: 'Красный костел',
+                fDescription: 'В храме святого Симеона и святой Елены находится полномасштабная копия Туринской Плащаницы',
+                fLink: 'https://msj.by/katolicheskie-xramy/krasnyj-kostel-v-minske/'
+            },
+            objMir = {
+                fName: [
+                    '<img class="img" src="../../images/mir.jpg">',
+                    '<img class="img" src="../../images/mir1.jpg">',
+                    '<img class="img" src="../../images/mir2.jpg">'
+                ],
+                fWidth: '300',
+                fTitle: 'Мирский замок',
+                fDescription: 'Построенный в начале XVI в. магнатом Ю. И. Ильиничем замок стал первым частнособственническим замком на землях Белоруссии',
+                fLink: 'https://mirzamak.by/'
+            },
+            objTroi = {
+                fName: [
+                    '<img class="img" src="../../images/troi.jpg">',
+                    '<img class="img" src="../../images/troi1.jpg">',
+                    '<img class="img" src="../../images/troi2.jpg">'
+                ],
+                fWidth: '300',
+                fTitle: 'Троицкое предместье',
+                fDescription: 'Троицкое предместье — исторический район города Минска, расположенный в северо-восточной части исторического центра на левом берегу реки Свислочь',
+                fLink: 'https://www.belarus.by/ru/travel/belarus-life/trinity-suburb'
+            }
+
+        let gallery = [objRed, objMir, objTroi];
+        let imgWrapper = '';
+        let bigImage = '';
+        let i = 0,
+            imgId = 1;  
+            j = 0;      
+        const WRAPPER_BIG = document.getElementById("bigPicture");
+        const GALLERY_WRAPPER = document.getElementById("galleryWrapper");
+
+        while (i < gallery.length) {
+            let imgArr = gallery[i].fName,
+                img = imgArr.join('');
+                desc = gallery[i].fDescription,
+                width = gallery[i].fWidth,
+                link = gallery[i].fLink,
+                title = gallery[i].fTitle;
+
+            imgWrapper += `
+                <div class="gallery-wrapper__inner">
+                    ${imgArr[0]}
+                    <font>
+                        <a href="${link}">${title}</a>
+                    </font>
+                </div>
+            `;
+        
+            document.addEventListener("DOMContentLoaded", function () {
+                const GALLERY_INNER_IMGS = document.querySelector(".gallery-wrapper__inner > .img");
+
+                // console.log(document.querySelector(".gallery-wrapper__inner > .img"));
+
+                // for (const GALLERY_INNER_IMG of GALLERY_INNER_IMGS) {
+
+                    GALLERY_INNER_IMGS.addEventListener('click', function() {
+
+                        for (j = 0; j < GALLERY_INNER_IMGS.length; j++) {
+                            // console.log(imgArr[j]);
+                            console.log(GALLERY_INNER_IMGS[j]);
+                        }
+
+                        WRAPPER_BIG.innerHTML = `
+                            <div class="gallery-big">
+                                ${img}
+                            </div>
+                            <p>${desc}</p>
+
+                            <button id="close">x</button>
+                            <button id="btn-prev"></button>
+                            <button id="btn-next"></button>
+                        `;
+
+                        if (WRAPPER_BIG !== null) {
+                            
+                            document.getElementById('close').addEventListener("click", () => {
+                                WRAPPER_BIG.innerHTML = '';
+                            });
+
+                            const SLIDES = document.querySelectorAll('.gallery-big .img');
+                            let currentSlide = 0;
+                            let slideInterval = setInterval(nextSlide, 5000);
+
+                            function nextSlide() {
+                                goToSlide(currentSlide + 1);
+                            }
+
+                            function prevSlide() {
+                                goToSlide(currentSlide - 1);
+                            }
+
+                            function pauseSlideshow() {
+                                clearInterval(slideInterval);
+                            }
+
+                            function goToSlide(n) {
+                                SLIDES[currentSlide].className = 'img';
+                                currentSlide = (n + SLIDES.length) % SLIDES.length;
+                                SLIDES[currentSlide].className = 'img showing';
+                            }
+
+                            document.getElementById('btn-next').onclick = function () {
+                                pauseSlideshow();
+                                nextSlide();
+                            };
+
+                            document.getElementById('btn-prev').onclick = function () {
+                                pauseSlideshow();
+                                prevSlide();
+                            };
+                        }
+                    });
+                // }
+            });
+            i++, imgId++;
+        }
+
+        GALLERY_WRAPPER.innerHTML = imgWrapper;
+    </script>
+</body>
+
+</html>

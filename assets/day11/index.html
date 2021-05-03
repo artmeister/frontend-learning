@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            width: 100%;
+            height: auto;
+            border: 0;
+            padding: 0;
+            margin: 1px 2px 3px 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- <h2 class="brd">Заголовок 2</h2>
+
+    <button id="btn">Изменить</button>
+
+    <p>Параграф 1</p>
+    <p>Параграф 2</p>
+    <p>Параграф 3</p>
+    <p>Параграф 4</p>
+    <p>Параграф 5</p>
+    <p>Параграф 6</p>
+    <p>Параграф 7</p>
+    <p>Параграф 8</p>
+    <p>Параграф 9</p>
+    <p>Параграф 10</p> -->
+
+    <section id="sec"></section>
+
+    <script>
+
+        // let i = 0, t = 60;
+
+        i = 1;
+
+        function timer() {
+            // if (t > 60) i = 0;
+            if (i > 11) i = 1;
+            sec.innerHTML = `<img src="../../images/${i}.jpg">`;
+            i++;
+            // i++;
+
+            setTimeout(timer, 1000);
+        }
+
+        document.addEventListener('DOMContentLoaded', timer);
+        
+        // Получаем стили документа
+        // let myStyle = getComputedStyle(document.body), //myStyle - массив-объект
+        // s = "", sv = "";
+
+
+        // for (i = 0; i < myStyle.length; i++) {
+        //     sv += myStyle[i];
+        //     s += `<br>${sv}: ${myStyle[sv]}`;
+        // }
+
+        // sec.innerHTML = s;
+        
+        // alert(`
+        //     margin: ${myStyle.margin};
+        //     Vertical margin: ${myStyle.marginTop} ${myStyle.marginBottom};
+        //     Horizontal margin: ${myStyle.marginLeft} ${myStyle.marginRight};
+        // `);
+
+        // const ARR_BRD = document.getElementsByClassName("brd");
+        // const BTN = document.getElementById("btn");
+        // const ARR_QUERY = document.querySelectorAll("p:nth-child(even)");
+
+        // function change() {
+            // for (i = 0; i < ARR_BRD.length; i++) {
+            //     ARR_BRD[i].style = "border: 1px solid #000;";
+            // }
+
+            // BTN.style = "display: none;"
+
+            // for (i = 0; i < ARR_QUERY.length; i++) {
+            //     ARR_QUERY[i].innerHTML = "Четный параграф";
+
+            //     ARR_QUERY[i].style = `
+            //         color: red;
+            //         border: 1ps solid #f00;
+            //     `;
+            // }
+        // }
+
+        // BTN.addEventListener("click", change);
+
+    </script>
+
+</body>
+</html>

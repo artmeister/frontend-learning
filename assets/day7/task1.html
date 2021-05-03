@@ -17,21 +17,21 @@
     <script>
         let objRed = {
                 fName: ['red', 'red1', 'red2'],
-                fWidth: '300',
+                fWidth: '300px',
                 fTitle: 'Красный костел',
                 fDescription: 'В храме святого Симеона и святой Елены находится полномасштабная копия Туринской Плащаницы',
                 fLink: 'https://msj.by/katolicheskie-xramy/krasnyj-kostel-v-minske/'
             },
             objMir = {
                 fName: ['mir', 'mir1', 'mir2'],
-                fWidth: '300',
+                fWidth: '300px',
                 fTitle: 'Мирский замок',
                 fDescription: 'Построенный в начале XVI в. магнатом Ю. И. Ильиничем замок стал первым частнособственническим замком на землях Белоруссии',
                 fLink: 'https://mirzamak.by/'
             },
             objTroi = {
                 fName: ['troi', 'troi1', 'troi2'],
-                fWidth: '300',
+                fWidth: '300px',
                 fTitle: 'Троицкое предместье',
                 fDescription: 'Троицкое предместье — исторический район города Минска, расположенный в северо-восточной части исторического центра на левом берегу реки Свислочь',
                 fLink: 'https://www.belarus.by/ru/travel/belarus-life/trinity-suburb'
@@ -41,9 +41,9 @@
         let imgWrapper = '';
         let bigImage = '';
         let i = 0,
-            imgId = 1;
-
-        // ['troi', 'troi1', 'troi2'],
+            imgId = 1;        
+        const WRAPPER_BIG = document.getElementById("bigPicture");
+        const GALLERY_BLOCK = document.getElementById("galleryBlock");
 
         while (i < gallery.length) {
             let img = gallery[i].fName,
@@ -53,7 +53,7 @@
                 title = gallery[i].fTitle;
 
             imgWrapper += `
-                <div class="gallery-wrapper__block">
+                <div class="gallery-wrapper__inner">
                     <img id="img-${img[0]}" class="img-small" src="../../images/${img[0]}.jpg" width="${width}">
                     <font>
                         <a href="${link}">${title}</a>
@@ -62,14 +62,18 @@
             `;
 
             document.addEventListener("DOMContentLoaded", function () {
-                document.querySelector(`img#img-${img[0]}`).addEventListener("click", () => {
 
+                function BImage() {
                     for (j = 0; j < img.length; j++) {
-                        bigImage +=
-                            `<img id="img-big-${img[j]}" class="img-big" src="../../images/${img[j]}.jpg">`;
+                        bigImage += `<img id="img-big-${img[j]}" class="img-big" src="../../images/${img[j]}.jpg">`;
                     }
+                }
 
-                    bigPicture.innerHTML = `
+                document.querySelector(`img#img-${img[0]}`).addEventListener("click", function() {
+
+                    BImage();
+
+                    WRAPPER_BIG.innerHTML = `
                         <div class="gallery-big">
                             ${bigImage}
                         </div>
@@ -80,10 +84,10 @@
                         <button id="btn-next"></button>
                     `;
 
-                    if (document.getElementById('bigPicture') !== null) {
+                    if (WRAPPER_BIG !== null) {
                         
                         document.getElementById('close').addEventListener("click", () => {
-                            bigPicture.innerHTML = '';
+                            WRAPPER_BIG.innerHTML = '';
                         });
 
                         const SLIDES = document.querySelectorAll('.gallery-big .img-big');
@@ -124,7 +128,7 @@
             i++, imgId++;
         }
 
-        galleryBlock.innerHTML = imgWrapper;
+        GALLERY_BLOCK.innerHTML = imgWrapper;
     </script>
 </body>
 

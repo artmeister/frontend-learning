@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        section {
+            width: 600px;
+            height: 300px;
+            margin: 0 auto;
+            transition: .3s;
+        }
+
+        section:hover {
+            filter: brightness(80%)
+        }
+
+        .box-inner {
+            width: 400px;
+            position: relative;
+            margin: 0 auto;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-flow: column wrap;
+        }
+
+        a#dlink {
+            position: absolute;
+            top: 0;
+            z-index: 1;
+            font-size: xx-large;
+            left: 1.5em;
+        }
+
+        #mlink {
+            position: relative;
+        }
+
+        img {
+            height: 300px;
+            width: 400px;
+        }
+
+        #header {
+            position: absolute;
+            bottom: 3em;
+            left: 1em;
+        }
+
+        #desc {
+            position: absolute;
+            bottom: 3em;
+            left: 1.5em;
+        }
+
+        .text-back {
+            background: #fff;
+            opacity: 0.7;
+            position: relative;
+            top: -130px;
+            z-index: 1;
+            width: 100%;
+            height: 126px;
+        }
+
+        div {
+            /* position: relative; */
+            /* width: 70px; */
+            /* border: 1px solid tomato; */
+            /* cursor: pointer; */
+        }
+
+        .material-icons {
+            font-size: 70px;
+            color: #fff;
+            transition: .6s;
+        }
+
+        #prev {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(-4em, 8em);
+        }
+
+        #next {
+            position: absolute;
+            top: 0;
+            right: 0;
+            transform: translate(5em, 8em);
+        }
+
+        .material-icons:hover {
+            /* transition: 1s; */
+            color: aqua;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <section id="box">
+        <div class="box-inner">
+            <a id="dlink" href="http://tut.by">tut.by</a>
+            <!-- <a id="mlink" href="http://tut.by"> -->
+                <img id="pic" src="../../images/1.jpg" alt="">
+
+                <div class="text-back">
+                    <h2 id="header">Заголовок 1</h2>
+                    <span id="desc">Описание 1</span>
+                </div>
+            <!-- </a> -->
+
+            <div id="prev">
+                <span class="material-icons">
+                    arrow_back_ios
+                </span>
+            </div>
+    
+            <div id="next">
+                <span class="material-icons">
+                    arrow_forward_ios
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        let i = 1,
+            p = 6;
+
+        let to = [
+            'http://tut.by',
+            'http://onliner.by',
+            'http://google.by',
+            'http://yandex.by',
+            'http://mail.ru',
+            'http://vk.com'
+        ]
+
+        let toStr = to.join(',');
+        toStr = toStr.replace(/http:\/\//g,'');
+        let noProtocol = toStr.split(',');
+
+        function start() {
+
+            pic.src = `../../images/${i}.jpg`;
+            // mlink.href = to[i-1];
+            header.innerHTML = `Заголовок ${i}`;
+            desc.innerHTML = `Описание ${i}`;
+            dlink.href = to[i-1];
+            dlink.innerHTML = noProtocol[i-1];
+            
+            if (i >= 6) i = 1;
+            else i++;
+
+
+            timerId = setTimeout(start, 4000);
+
+        }
+
+        function stop() {
+            clearTimeout(timerId);
+        }
+        
+        function fr() {
+
+            pic.src = `../../images/${i}.jpg`;
+            header.innerHTML = `Заголовок ${i}`;
+            desc.innerHTML = `Описание ${i}`;
+            // mlink.href = to[i-1];
+            dlink.href = to[i-1];
+            dlink.innerHTML = noProtocol[i-1];
+
+            if (i >= p) i = 1
+            else i++;
+
+        }
+
+        function bc() {
+
+            pic.src = `../../images/${i}.jpg`;
+            header.innerHTML = `Заголовок ${i}`;
+            desc.innerHTML = `Описание ${i}`;
+            // mlink.href = to[i-1];
+            dlink.href = to[i-1];
+            dlink.innerHTML = noProtocol[i-1];
+
+            if (i <= 1) i = p
+            else i--;
+
+        }
+
+        addEventListener('load', start);
+        box.addEventListener('mouseenter', stop);
+        box.addEventListener('mouseleave', start);
+        next.addEventListener('click', fr);
+        prev.addEventListener('click', bc);
+    </script>
+
+
+</body>
+
+</html>
