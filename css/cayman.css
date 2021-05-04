@@ -1,5 +1,4 @@
-* {
-  box-sizing: border-box; }
+* {box-sizing: border-box; }
 
 body {
   padding: 0;
@@ -11,9 +10,9 @@ body {
 
 a {
   color: #1e6bb8;
-  text-decoration: none; }
-  a:hover {
-    text-decoration: underline; }
+  text-decoration: none;
+}
+a:hover {text-decoration: underline;}
 
 .btn {
   display: inline-block;
@@ -224,7 +223,8 @@ a {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-}  
+}
+.daysBlock:not(:first-child) .dayWrapper {padding-top: 10px;}  
 .dayWrapper {
   padding: 0 25px;
   text-align: center;
@@ -235,27 +235,27 @@ a {
   border-right: none;
   padding-right: 0;
 }
-.dayWrapper:first-child {
-  padding-left: 0;
-}
+.dayWrapper:first-child {padding-left: 0;}
 
 .site-footer {
   padding-top: 2rem;
   margin-top: 2rem;
-  border-top: solid 1px #eff0f1; }
-  @media screen and (min-width: 64em) {
-    .site-footer {
-      font-size: 1rem; } }
-  @media screen and (min-width: 42em) and (max-width: 64em) {
-    .site-footer {
-      font-size: 1rem; } }
-  @media screen and (max-width: 42em) {
-    .site-footer {
-      font-size: 0.9rem; } }
+  border-top: solid 1px #eff0f1; 
+}
+
+@media screen and (min-width: 64em) {
+  .site-footer {font-size: 1rem; }
+}
+@media screen and (min-width: 42em) and (max-width: 64em) {
+  .site-footer {font-size: 1rem; }
+}
+@media screen and (max-width: 42em) {
+  .site-footer {font-size: 0.9rem;}
+}
 
 .site-footer-owner {
   display: block;
-  font-weight: bold; }
+  font-weight: bold;
+}
 
-.site-footer-credits {
-  color: #819198; }
+.site-footer-credits {color: #819198; }
