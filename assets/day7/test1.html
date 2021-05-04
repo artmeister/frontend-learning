@@ -17,7 +17,7 @@
     <script>
         let objRed = {
                 fName: [
-                    '<img class="img" src="../../images/red.jpg">',
+                    '<img class="img img1" src="../../images/red.jpg">',
                     '<img class="img" src="../../images/red1.jpg">',
                     '<img class="img" src="../../images/red2.jpg">'
                 ],
@@ -28,7 +28,7 @@
             },
             objMir = {
                 fName: [
-                    '<img class="img" src="../../images/mir.jpg">',
+                    '<img class="img img1" src="../../images/mir.jpg">',
                     '<img class="img" src="../../images/mir1.jpg">',
                     '<img class="img" src="../../images/mir2.jpg">'
                 ],
@@ -39,7 +39,7 @@
             },
             objTroi = {
                 fName: [
-                    '<img class="img" src="../../images/troi.jpg">',
+                    '<img class="img img1" src="../../images/troi.jpg">',
                     '<img class="img" src="../../images/troi1.jpg">',
                     '<img class="img" src="../../images/troi2.jpg">'
                 ],
@@ -76,17 +76,21 @@
             `;
         
             document.addEventListener("DOMContentLoaded", function () {
-                const GALLERY_INNER_IMGS = document.querySelector(".gallery-wrapper__inner > .img");
+                const GALLERY_INNER_IMG = document.querySelector(".gallery-wrapper__inner > .img");
 
-                // console.log(document.querySelector(".gallery-wrapper__inner > .img"));
+                const GALLERY_INNER_IMGS = document.getElementsByClassName("img1");
 
-                // for (const GALLERY_INNER_IMG of GALLERY_INNER_IMGS) {
+                console.log(GALLERY_INNER_IMGS);
 
-                    GALLERY_INNER_IMGS.addEventListener('click', function() {
+                for (let img of GALLERY_INNER_IMGS) {
+                    console.log(img);
+                }
 
-                        for (j = 0; j < GALLERY_INNER_IMGS.length; j++) {
+                    GALLERY_INNER_IMG.addEventListener('click', function() {
+
+                        for (j = 0; j < GALLERY_INNER_IMG.length; j++) {
                             // console.log(imgArr[j]);
-                            console.log(GALLERY_INNER_IMGS[j]);
+                            console.log(GALLERY_INNER_IMG[j]);
                         }
 
                         WRAPPER_BIG.innerHTML = `
@@ -139,7 +143,6 @@
                             };
                         }
                     });
-                // }
             });
             i++, imgId++;
         }

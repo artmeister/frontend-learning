@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Объекты браузера</title>
+</head>
+<body>
+    <img src="../../images/minsk.jpg" width="100" onclick="wnd()">
+
+    <h2 id="h2"></h2>
+
+    <script>
+        function wnd() {
+            window.open(
+                "../../images/minsk.jpg",
+                null,
+                "width=1920, height=1080"
+            )
+        }
+
+        h2.innerHTML = `
+            ${navigator.appName}<br>
+            ${navigator.appCodeName}<br>
+            ${navigator.appVersion}<br><br>
+
+            ${history.length}<br><br>
+
+            ${screen.width}<br>
+            ${screen.height}<br>
+            ${screen.colorDepth}
+
+        `;
+    </script>
+</body>
+</html>

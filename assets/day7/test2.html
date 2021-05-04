@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../css/style.css">
+
+</head>
+
+<body>
+
+    <section id="picturesHere"></section>
+    <section id="bigPic"></section>
+
+
+    <script>
+        let gallery = [{
+                fname: ['red.jpg', 'red1.jpg', 'red2.jpg'],
+                pw: '300',
+                title: 'Красный костел',
+                link: 'https://msj.by/katolicheskie-xramy/krasnyj-kostel-v-minske/',
+                description: 'В храме святого Симеона и святой Елены находится полномасштабная копия Туринской Плащаницы'
+            },
+            {
+                fname: ['troi.jpg', 'troi1.jpg', 'troi2.jpg'],
+                pw: '300',
+                title: 'Троицкое предместье',
+                link: 'https://www.belarus.by/ru/travel/belarus-life/trinity-suburb',
+                description: 'Троицкое предместье — исторический район города Минска, расположенный в северо-восточной части исторического центра на левом берегу реки Свислочь'
+            },
+            {
+                fname: ['mir.jpg', 'mir1.jpg', 'mir2.jpg'],
+                pw: '300',
+                title: 'Мирский замок',
+                link: 'https://mirzamak.by/',
+                description: 'Построенный в начале XVI в. магнатом Ю. И. Ильиничем замок стал первым частнособственническим замком на землях Белоруссии'
+            }
+        ]
+
+        function drawPic() {
+
+            let s = '';
+
+            for (i = 0; i < gallery.length; i++) {
+                s += `
+                    <div id="div-id-${i}">
+                        <img id="img-id-${i}" src="../../images/${gallery[i].fname[0]}" alt="${gallery[i].title}" onclick="showPic('${gallery[i].fname[0]}','${gallery[i].description}')" style="width: ${gallery[i].pw}px" onmouseenter="timerID=setTimeout('roll(${i}), 1000')" onmouseleave="clearTimeout(timerID)"> 
+
+                        <p>
+                            <a href="${gallery[i].link}">${gallery[i].title}</a>
+                        </p>
+                    </div>
+            `;
+            }
+
+            picturesHere.innerHTML = s;
+        }
+
+        let p = 2, k = 0;
+
+        function roll(n) {
+            if (++k > p) k = 0;
+            
+            mid = document.getElementById(`div-id-${n}`);
+            mid.innerHTML = `
+                <div>
+                    <img id="img-id-${i}" src="../../images/${gallery[n].fname[k]}" alt="${gallery[n].title}" onclick="showPic('${gallery[n].fname[k]}','${gallery[n].description}')" style="width: ${gallery[n].pw}px" onmouseleave="stop()"> 
+
+                    <p>
+                        <a href="${gallery[n].link}">${gallery[n].title}</a>
+                    </p>
+                </div>
+            `;
+
+            timerID = setTimeout(`roll(${n})`, 2000);
+        }
+
+        function stop() {
+            clearTimeout(timerID);
+            setTimeout(drawPic, 500); 
+        }
+
+        function showPic(p, d) {
+            bigPic.innerHTML = `
+        <img onclick="bigPic.innerHTML =''" src="../../images/${p}" style="width: 1000px">
+        <p>${d}</p>
+        `;
+        }
+
+        addEventListener("load", drawPic);
+    </script>
+
+
+</body>
+
+</html>
