@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Табы</title>
+
+    <style>
+        section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            width: 550px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        #sec2 {justify-content: center;}
+
+        div {
+            width: 110px;
+            padding: 3px;
+            border: 1px solid #00f;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        img {transition: .5s;}
+
+        .menuOff {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .menuOn {
+            background-color: #00f;
+            color: #fff;
+        }
+    </style>
+
+</head>
+<body>
+
+    <section id="sec1">
+        <!-- <div id="id1" onmouseover="tab(this, 'winter.jpg')">Зима</div>
+        <div id="id2" onmouseover="tab(this, 'spring.jpg')">Весна</div>
+        <div id="id3" onmouseover="tab(this, 'summer.jpg')">Лето</div>
+        <div id="id4" onmouseover="tab(this, 'autumn.jpg')">Осень</div> -->
+        <div class="tab" id="id1">Зима</div>
+        <div class="tab" id="id2">Весна</div>
+        <div class="tab" id="id3">Лето</div>
+        <div class="tab" id="id4">Осень</div>
+    </section>
+
+    <section id="sec2">
+        <img id="pic" src="../../images/winter.jpg">
+    </section>
+    
+    <script>
+        // let tab = (idn, s) => {
+
+        //     menu = document.querySelectorAll("div");
+        //     menu.forEach(function(item, i, menu) {
+        //         item.setAttribute("class", "menuOff");
+        //     });
+
+        //     pic.style = "opacity: 0;";
+        //     setTimeout('pic1()', 20);
+
+
+        //     pic1 = () => {
+        //         pic.src = `../../images/${s}`;
+        //         pic.style = "opacity: 1;";
+        //         idn.setAttribute("class", "menuOn");
+        //     }
+        // }
+
+        let tabs = document.querySelectorAll('.tab');
+        let i = 0;
+        // let images = ['winter.jpg', 'spring.jpg', 'summer.jpg', 'autumn.jpg'];
+
+        tabs.forEach(function (tab, image) {
+
+            images = ['winter.jpg', 'spring.jpg', 'summer.jpg', 'autumn.jpg'];
+
+
+            // images.forEach(function (image) {
+
+            tab.addEventListener('mouseenter', function () {
+
+                // images.forEach(function (image) {
+
+                    menu = document.querySelectorAll("div");
+                    menu.forEach(function(item) {
+                        item.setAttribute("class", "menuOff");
+                    });
+
+                    pic.style = "opacity: 0;";
+                                    
+                    pic1 = () => {
+
+                        pic.src = `../../images/${image}`;
+                        pic.style = "opacity: 1;";
+                        tab.setAttribute("class", "menuOn");
+
+                    }
+
+                    // pic1();
+                    // setTimeout('pic1()', 20);
+                // });
+
+                pic1();
+
+            });
+        // });
+        });
+    </script>
+</body>
+</html>

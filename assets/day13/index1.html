@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        section {
+            width: 550px;
+            height: 366px;
+            margin: 0 auto;
+            border: 1px solid #f00;
+            overflow: hidden;
+        }
+        img {
+            width: 100%;
+            position: relative;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section id="slide">
+        <img id="pic1" src="../../images/autumn.jpg">
+    </section>
+
+    <script>
+
+        let wp = 550, step = 10;
+
+        function func() {
+            img = document.createElement('img');
+
+            slide.append(img);
+
+            function setAttributes(el, attrs) { // Кастомный код для множественного
+                for(let attr in attrs) {
+                    el.setAttribute(attr, attrs[attr]);
+                }
+            }
+            setAttributes(img, {
+                "src": "../../images/winter.jpg",
+                "id": "img",
+                "style": "left: 550px;"
+            });
+
+            j = 1
+            func1();
+
+        }
+
+        function func1() {
+            if (j > wp + step) {
+                clearTimeout(mSlide);
+            } else {
+                pic1.style = `right: ${j}px;`;
+                img.style = `left: ${-j+wp}px; top: -372px;`;
+                j += step;
+                mSlide = setTimeout(func1, 20);
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(func, 1000);
+        });
+    </script>
+</body>
+</html>
